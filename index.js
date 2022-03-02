@@ -16,14 +16,10 @@ if(process.env.NODE_ENV === "production")
     res.sendFile(path.join(__dirname, "client", "build", "index.html"));
 	});	
 
-	app.get("/demo",(req,res)=>{
-	res.send("demo");
-})
+
 }
 
-app.get("/demo",(req,res)=>{
-	res.send("demo");
-})
+
 
 const port = process.env.PORT || 5000; //Line 3	
 app.listen(port, () => console.log(`Listening on port ${port}`));
