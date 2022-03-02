@@ -9,6 +9,10 @@ const app = express(); //Line 2
 // 	res.send("ok");
 // })
 
+
+app.get("/demo",function(req,res){
+	res.send("ok");
+})
 if(process.env.NODE_ENV === "production")
 {
 	app.use(express.static(path.join(__dirname, "client", "build")));	
@@ -16,9 +20,7 @@ if(process.env.NODE_ENV === "production")
     res.sendFile(path.join(__dirname, "client", "build", "index.html"));
 	});	
 }
-app.get("/demo",function(req,res){
-	res.send("ok");
-})
+
 const port = process.env.PORT || 5000; //Line 3	
 app.listen(port, () => console.log(`Listening on port ${port}`));
 
