@@ -4,9 +4,10 @@ import {useEffect,useState} from 'react';
 function App() {
 
   const[data,setData]=useState("");
-  useEffect(()=>{
+  useEffect(async()=>{
     const req = await fetch("/demo");
     const res = await req.text();
+    console.log(res);
     setData(res);
   },[])
   return (
