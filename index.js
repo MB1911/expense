@@ -32,7 +32,7 @@ mongoose.connect('mongodb+srv://MB:jayhatkesh@contact.vzwnf.mongodb.net/myfirst?
 // 	res.send("ok");
 // })
 app.get("/demo",function(req,res){
-	res.send("ok");
+	res.send("nnok");
 })
 
 if(process.env.NODE_ENV === "production")
@@ -46,7 +46,7 @@ if(process.env.NODE_ENV === "production")
 	res.send("ok");
 })	
 
-
+}
 passport.use(new GoogleStrategy({
 clientID:process.env.CLIENT_ID,
 	clientSecret:process.env.CLIENT_SECRET,
@@ -438,7 +438,7 @@ app.get("/logout",(req,res)=>{
 	req.logout();
 	res.redirect("http://localhost:3000");
 })
-}
+
 const port = process.env.PORT || 5000; //Line 3	
 app.listen(port, () => console.log(`Listening on port ${port}`));
 
