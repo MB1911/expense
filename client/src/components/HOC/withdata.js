@@ -3,7 +3,6 @@ function withData(WrappedComponent, requestUrl) {
     const WithFetch = (props) => {
       const [data, setData] = useState([]);
       
-      
       useEffect(() => {
         if (requestUrl) fetchData(requestUrl);
       }, []);
