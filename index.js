@@ -76,6 +76,7 @@ app.get("/expense/proflie",async function(req,res){
 res.send(req.user);
 })
 app.get("/expense/ex",(req,res)=>{
+
 	res.send("ok");
 })
 app.get("/auth/google",passport.authenticate('google',{scope:["profile"]}));
@@ -111,6 +112,7 @@ passport.use(new LocalStrategy(
             return done(null,false);
         }
       		return done(null, user);
+
 		})
 	}
 ))
