@@ -441,7 +441,7 @@ app.get("/logout",(req,res)=>{
 	req.logout();
 	res.redirect("http://localhost:3000");
 })
-}
+
 const port = process.env.PORT || 5000; //Line 3	
 app.listen(port, () => console.log(`Listening on port ${port}`));
 
