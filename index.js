@@ -34,6 +34,9 @@ mongoose.connect(process.env.MONGO);
 app.get("/demo",function(req,res){
 	res.send("nnok");
 })
+app.get("/expense/demo",function(req,res){
+	res.send("ok");
+})
 
 if(process.env.NODE_ENV === "production")
 {
