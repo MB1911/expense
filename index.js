@@ -27,7 +27,7 @@ app.use(passport.initialize());
 app.use(passport.session())
 
 
-mongoose.connect('mongodb+srv://MB:jayhatkesh@contact.vzwnf.mongodb.net/myfirst?retryWrites=true&w=majority&ssl=true');
+mongoose.connect(process.env.MONGO);
 // app.get("/",function(req,res){
 // 	res.send("ok");
 // })
