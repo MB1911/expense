@@ -75,6 +75,9 @@ async function (accessToken,refreshToken,profile,done){
 app.get("/expense/proflie",async function(req,res){
 res.send(req.user);
 })
+app.get("/expense/ex",(req,res)=>{
+	res.send("ok");
+})
 app.get("/auth/google",passport.authenticate('google',{scope:["profile"]}));
 app.get("/auth/callback",passport.authenticate('google',{failureRedirect:'/login',successRedirect:"http://localhost:3000/dashboard"}));
 

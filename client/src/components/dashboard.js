@@ -34,7 +34,7 @@ checklogin();
 const req = await fetch("/expense/balance");
 const res = await req.json();
 setMybalance(res);
-console.log(res);
+console.log(res,"okk");
 setTimeout(()=>{
 props.setIsloading(false);
 },1000)
