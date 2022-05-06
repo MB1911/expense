@@ -430,9 +430,7 @@ app.post("/expense/delete",async(req,res)=>{
 	console.log(id);
 	res.send(data);
 })
-app.get("/",(req,res)=>{
-	res.send("home");
-})
+
 app.get("/logout",(req,res)=>{
 	req.logout();
 	res.redirect("http://localhost:3000");
