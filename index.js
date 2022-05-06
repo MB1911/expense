@@ -433,7 +433,7 @@ app.post("/expense/delete",async(req,res)=>{
 
 app.get("/logout",(req,res)=>{
 	req.logout();
-	res.redirect("http://localhost:3000");
+	res.redirect(process.env.HOME);
 })
 
 if(process.env.NODE_ENV === "production")
