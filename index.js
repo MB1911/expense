@@ -38,16 +38,7 @@ app.get("/expense/demo",function(req,res){
 	res.send("ok");
 })
 
-if(process.env.NODE_ENV === "production")
-{
-	app.use(express.static(path.join(__dirname, "client", "build")));	
-	app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "client", "build", "index.html"));
-	});
 
-	app.get("/demo",function(req,res){
-	res.send("ok");
-})	
 
 
 passport.use(new GoogleStrategy({
@@ -446,6 +437,17 @@ app.get("/logout",(req,res)=>{
 	req.logout();
 	res.redirect("http://localhost:3000");
 })
+
+if(process.env.NODE_ENV === "production")
+{
+	app.use(express.static(path.join(__dirname, "client", "build")));	
+	app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+	});
+
+	app.get("/demo",function(req,res){
+	res.send("ok");
+})	
 }
 const port = process.env.PORT || 5000; //Line 3	
 app.listen(port, () => console.log(`Listening on port ${port}`));
