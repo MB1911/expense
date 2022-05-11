@@ -25,13 +25,11 @@ const handledelete = async(data,id) =>{
 	console.log(newdata);
 	return newdata;
 }
-const handleedit = async(data,id) =>{
-	
-}
 return <Userinfo.Provider value={{
 islogin,
 checklogin,
 handledelete,
+setIslogin
 }}>{props.children}</Userinfo.Provider>
 }
 

@@ -62,9 +62,7 @@ return(
 					<datalist  id="name">
 						{props.type.length > 0 && props.type.map(d=><option value={d.type} id={d._id}>{d.type}</option>)}
 					</datalist>
-                  	<select className="form-select" name="type" onChange={handlechange} value={data[0] && data[0].type}>
-                  		{props.type.length > 0 && props.type.map(d=><option value={d.type} id={d._id}>{d.type}</option>)}
-                  	</select>
+                  	
                   	<div className="invalid-feedback"></div>
                   </div>          
                   <div className="form-group">

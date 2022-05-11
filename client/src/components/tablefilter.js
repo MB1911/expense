@@ -5,9 +5,9 @@ return(
 	<div className="form-group">
 	
 	<label>Group-By</label>
-	<select className="form-select" onChange={handlecat}>
+	<select className="form-select" onChange={handlecat} value={groupby}>
 		<option value="all">All</option>
-		{type.map(ty=><option>{ty.category}</option>)}
+		{type.map(ty=><option value={ty.type}>{ty.type}</option>)}
 	</select>
 	</div>
 	</div>

@@ -54,6 +54,7 @@ if(groupby=="all")
 else
 {
 	const filter = await getData({url:"/expense/expensebycategory",method:"POST",body:{cat:groupby}});
+	console.log(groupby);
 	setData(filter);
 }
 //display total expense

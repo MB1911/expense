@@ -143,7 +143,7 @@ return(
 									<Card title="Summary of expense" subtitle="this month">
 										<table className="table">
 										<tbody>	
-										{summary.map((d=><tr><td>{d.type}</td><td>{d.total}</td></tr>))}
+										{summary.map((d=><tr><td>{d.type}</td><td>{formater(d.total)}</td></tr>))}
 										</tbody>	
 										
 										</table>

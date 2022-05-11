@@ -33,9 +33,7 @@ return(
             <NavLink to="/viewexpense" className={({isActive}) => isActive ? "active" : ""}>
               <span>View Expense</span>
             </NavLink>
-            <NavLink to="/addtype" className={({isActive}) => isActive ? "active" : ""}>
-              <span>Add Expense Type</span>
-            </NavLink>	
+            	
           </li>
          </ul>
         </li>

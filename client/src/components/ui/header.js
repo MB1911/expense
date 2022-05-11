@@ -1,7 +1,10 @@
 import {useEffect,useState} from 'react';
 import {Link,useNavigate,NavLink} from 'react-router-dom';
+import {useUser} from '../context/userinfo';
 const Header = () =>{
 
+
+const {setIslogin} = useUser();
 const[data,setData]=useState();
 const hist = useNavigate();
 useEffect(async()=>{
@@ -11,10 +14,16 @@ setData(res);
 console.log(res);
 },[])
 
-const handlelogout = (e) =>{
+const handlelogout = async(e) =>{
   e.preventDefault();
   localStorage.removeItem("username");
-  window.location.href="http://localhost:5000/logout";
+  const req = await fetch("/expense/logout");
+  const res = await req.text();
+  if(res=="logout")
+  {
+    setIslogin(false);
+    hist("/");
+  }
 }
 return(
 	<header id="header" class="header fixed-top d-flex align-items-center">
@@ -47,45 +56,9 @@ return(
           </a>
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
-            <li class="dropdown-header">
-              <h6>{data && data.username}</h6>
-              <span>Web Designer</span>
-            </li>
-            <li>
-              <hr class="dropdown-divider" />
-            </li>
-
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
-                <i class="bi bi-person"></i>
-                <span>My Profile</span>
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider" />
-            </li>
-
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
-                <i class="bi bi-gear"></i>
-                <span>Account Settings</span>
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider" />
-            </li>
-
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
-                <i class="bi bi-question-circle"></i>
-                <span>Need Help?</span>
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider" />
-            </li>
-
-            <li>
+            
+            
+            <li className="text-center">
               <a class="dropdown-item d-flex align-items-center" href="#" onClick={handlelogout}>
                 <i class="bi bi-box-arrow-right"></i>
                 <span>Sign Out</span>

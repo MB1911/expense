@@ -365,8 +365,9 @@ app.post("/expense/expensebycategory",async(req,res)=>{
 	// const trall = await Transaction.find({user:id,$expr:{$eq:[{$year:"$date"},by]}}).sort({_id:-1});
 
 	const data = await Transaction.find({user:id,type:req.body.cat,$and:[
-		{$expr:{$eq:[{$year:"$date"},"2022"]}}, 
-		{$expr:{$eq:[{$month:"$date"},"03"]}}]});
+		{$expr:{$eq:[{$year:"$date"},new Date().getFullYear()]}}, 
+		{$expr:{$eq:[{$month:"$date"},new Date().getMonth()+1]}}]});
+	console.log("cat is");
 	console.log(data);
 	res.send(data);
 })
@@ -431,9 +432,9 @@ app.post("/expense/delete",async(req,res)=>{
 	res.send(data);
 })
 
-app.get("/logout",(req,res)=>{
+app.get("/expense/logout",(req,res)=>{
 	req.logout();
-	res.redirect(process.env.HOME);
+	res.send("logout");
 })
 
 if(process.env.NODE_ENV === "production")

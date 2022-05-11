@@ -27,7 +27,7 @@ return(
       <h1 style={{textTransform: 'capitalize'}}>{location.pathname.split("/")[1]}</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item"><a href="">Home</a></li>
           <li class="breadcrumb-item active">{location.pathname.split("/")[1]}</li>
         </ol>
       </nav>

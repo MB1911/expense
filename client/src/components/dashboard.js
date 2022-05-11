@@ -72,10 +72,7 @@ return(
 	   		<div className="col-12">
 	   			<Alltransactionwithdata />
 	   		</div>
-	   		<div className="col-12">
-	   			<button onClick={handlereport}>Genrate Report</button>
-	   			
-	   		</div>
+	   		
 	   	</div>
 	  </div>
 	  <div className="col-lg-4">
