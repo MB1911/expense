@@ -84,7 +84,14 @@ passport.serializeUser(function(user, done) {
 passport.deserializeUser(function(user, done) {
   done(null, user);
 });
-
+function authenticationMiddleware () {
+  return function (req, res, next) {
+    if (req.isAuthenticated()) {
+      return next()
+    }
+    res.redirect('localhost:3000');
+  }
+}
 
 
 
@@ -174,7 +181,8 @@ app.post("/expense/alltransaction",async(req,res)=>{
 	let trall;
 	if(num){
 		console.log(num);
-		trall = await Transaction.find({user:id}).sort({_id:-1}).limit(parseInt(num));	
+		trall = await Transaction.find({user:id}).sort({_id:-1}).limit(parseInt(num+1));	
+		console.log("num is"+num);
 	}
 	if(!num)
 	{
@@ -185,10 +193,11 @@ app.post("/expense/alltransaction",async(req,res)=>{
 	{
 		if(trall[i].date.getMonth()+1 == req.body.month && trall[i].date.getFullYear() == req.body.year)
 		{
-			arr.push(trall[i])
+			arr.push(trall[i])	
 		}	
+		console.log(arr);
 	}
-	console.log(num);
+	
 	res.send(arr);
 })
 app.post("/expense/filter",async(req,res)=>{
@@ -257,16 +266,31 @@ app.get("/expense/balance",async(req,res)=>{
 	let dcs = await Transaction.aggregate().match({"ammount":{$lt:0},user:id}).group({_id:{month:{$month:"$date"},year:{$year:"$date"}},total:{$sum:"$ammount"}});
 	let dcs1 = await Transaction.aggregate().match({"ammount":{$gt:0},user:id}).group({_id:{month:{$month:"$date"},year:{$year:"$date"}},total:{$sum:"$ammount"}});
 	let fdata = [];
+	console.log(dcs.length,dcs1.length);
 	for(let i=0;i<dcs.length;i++)
 	{
-		fdata.push({
+		if(!dcs1[i]){
+			fdata.push({
+			month:dcs[i]._id.month,
+			year:dcs[i]._id.year,
+			totalexpense:dcs[i].total,
+			totalsaving:dcs[i].total
+		})
+		}
+		else
+		{
+			fdata.push({
 			month:dcs[i]._id.month,
 			year:dcs[i]._id.year,
 			totalexpense:dcs[i].total,
 			totalsaving:dcs1[i].total + dcs[i].total
-		})
+		})	
+		}
 		
-	}
+		
+	}	
+	
+	
 	console.log(fdata);
 	res.send(fdata);
 })
