@@ -4,9 +4,9 @@ import {useEffect} from 'react';
 //HOC withData for props
 const ExpenseTable = ({setIsloading,data,handledelete,className,handlesort,handleedit}) =>{ 
 return(	
-  <>
+  <div className="table-responsive">
   
- <table class="table  mt-2" id="mytable" className={className}>
+ <table class="table   mt-2 " id="mytable" className={className}>
                 <thead>
                   <tr>
                     <th>#</th>
@@ -42,7 +42,7 @@ return(
                 
                 {data.length === 0 && <p className="text-muted text-center">No record to display</p>}
                 
-                </>
+                </div>
                 )
 }
 export default ExpenseTable;

@@ -1,4 +1,4 @@
-//Dashboard 
+	//Dashboard 
 import Card from './dashcard';
 import Sidebar from './ui/sidebar';
 import Graph from './graph/graph';
@@ -30,14 +30,16 @@ const Balance = WithData(Card,"/expense/alltransaction");
 const[mybalance,setMybalance]=useState([]);
 const {islogin,checklogin} = useUser();
 useEffect(async()=>{
-checklogin();
-const req = await fetch("/expense/balance");
-const res = await req.json();
-setMybalance(res);
-console.log(res,"okk");
-setTimeout(()=>{
-props.setIsloading(false);
-},1000)
+if(islogin)
+{
+	const req = await fetch("/expense/balance");
+	const res = await req.json();
+	setMybalance(res);
+	console.log(res,"okk");
+	setTimeout(()=>{
+		props.setIsloading(false);
+	},1000)	
+}	
 },[])
 
 const handlereport = async() =>{

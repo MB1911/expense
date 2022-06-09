@@ -11,20 +11,10 @@ import Register from './components/register';
 import { Routes, Route, Link } from "react-router-dom";
 import PrivateRoute from './components/privateroute';
 import {useUser} from './components/context/userinfo';
+import NotFound from './components/ui/notfound';
 function App() {
 
 
-const[data,setData]=useState();
-const {islogin,checklogin} = useUser();
-useEffect(async()=>{
-const req = await fetch("/expense/proflie");
-const res = await req.json();
-setData(res);
-if(res)
-{
-  checklogin();
-}
-},[])
  
   return (
     <div className="App">
@@ -32,11 +22,12 @@ if(res)
       <Routes>
       	<Route path="/" element={<Login />}  />
         <Route path="register" element={<Register />} />
-        <Route exact path='/' element={<PrivateRoute/>}>
-            <Route exact path='/dashboard' element={<Dashboard/>}/>
-            <Route path="addexpense" element={<Addexpense />} />
-            <Route path="viewexpense" element={<ViewExpense />} />
-            <Route path="search" element={<Search />} />
+        <Route  path='/' element={<PrivateRoute/>}>
+          <Route path="dashboard" element={<Dashboard />} />
+          <Route path="addexpense" element={<Addexpense />} />
+          <Route path="viewexpense" element={<ViewExpense />} />
+          <Route path="search" element={<Search />} />
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
  	</Wrapper>   

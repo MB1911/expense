@@ -14,6 +14,7 @@ setData(res);
 console.log(res);
 },[])
 
+const[myclass,setMyClass]=useState(false);
 const handlelogout = async(e) =>{
   e.preventDefault();
   localStorage.removeItem("username");
@@ -25,15 +26,20 @@ const handlelogout = async(e) =>{
     hist("/");
   }
 }
+
+const handlesidebar = () =>{
+     setMyClass(prev=>!prev);
+}
+myclass ? document.body.classList.add("toggle-sidebar") : document.body.classList.remove("toggle-sidebar");
 return(
 	<header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
       <a href="index.html" class="logo d-flex align-items-center">
         <img src="assets/img/logo.png" alt="" />
-        <span class="d-none d-lg-block">Expense Master</span>
+        <span >Expense Master</span>
       </a>
-      <i class="bi bi-list toggle-sidebar-btn"></i>
+      <i class="bi bi-list toggle-sidebar-btn" onClick={handlesidebar}></i>
     </div>
 
     
@@ -41,11 +47,7 @@ return(
     <nav class="header-nav ms-auto">
       <ul class="d-flex align-items-center">
 
-        <li class="nav-item d-block d-lg-none">
-          <a class="nav-link nav-icon search-bar-toggle " href="#">
-            <i class="bi bi-search"></i>
-          </a>
-        </li>
+       
 
       
         <li class="nav-item dropdown pe-3">

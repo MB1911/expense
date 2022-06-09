@@ -1,21 +1,31 @@
 import { NavLink } from "react-router-dom";
-import {useState} from 'react';
+import {useState,useEffect} from 'react';
 import Report from '../modal/report';
 const Sidebar = () =>{
 const[cs,setCs]=useState("collapse");
 const[acs,setAcs]=useState("nav-link collapsed");
 const[show,setShow]=useState(false);
-
 const handlemodel = () =>{
   setShow(true);
 }
+let mob_cs = "";
+useEffect(()=>{
+  
+},[])
+
+
+let myclass = true;
+const handleresize = () =>{
+     myclass = false;
+}
+myclass ? document.body.classList.remove("toggle-sidebar") :  document.body.classList.remove("toggle-sidebar");
 return(
 	<aside id="sidebar" class="sidebar" >
     <Report show={show} handleClose={()=>setShow(false)}/>
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <NavLink onClick={()=>{setAcs("nav-link collapsed");setCs("collapse")}} to="/dashboard" className={({isActive}) => isActive ? "nav-link" : "nav-link collapsed"}>
+        <NavLink onClick={()=>{setAcs("nav-link collapsed");setCs("collapse");}} to="/dashboard" className={({isActive}) => isActive ? "nav-link" : "nav-link collapsed"}>
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </NavLink>
@@ -27,10 +37,10 @@ return(
         </a>
         <ul id="components-nav" class={`nav-content ${cs}`} data-bs-parent="#sidebar-nav">
           <li>
-            <NavLink to="/addexpense" className={({isActive}) => isActive ? "active" : ""}>
+            <NavLink to="/addexpense" className={({isActive}) => isActive ? "active" : ""} onClick={handleresize}>
               <span>Add Expense</span>
             </NavLink>
-            <NavLink to="/viewexpense" className={({isActive}) => isActive ? "active" : ""}>
+            <NavLink to="/viewexpense" className={({isActive}) => isActive ? "active" : ""} onClick={handleresize}>
               <span>View Expense</span>
             </NavLink>
             	

@@ -27,7 +27,7 @@ const addexpense = (e) =>{
 return(	
 <form onSubmit={addexpense}>
 		<div className="row">
-		<div className="col-3">
+		<div className="col-md-3 col-sm-12">
 		<div className="form-group">
 			<label>Credit/debit type</label>
 			<input list="name" className="form-control" ref={category} className={`form-control ${!isvalid ? "is-invalid" : ""}`}/>
@@ -38,7 +38,7 @@ return(
 			<span>i.e Salary for credit,glosary for expense</span>			
 		</div>
 		</div>
-		<div className="col-3">
+		<div className="col-md-3 col-sm-12">
 		<div className="form-group">
 			<label>Ammount</label>
 			<input type="number" className={`form-control ${!isvalid ? "is-invalid" : ""}`} ref={ammount}/>
@@ -46,14 +46,14 @@ return(
 			<span> + ammount for credit - for expense</span>
 		</div>
 		</div>
-		<div className="col-3">
+		<div className="col-md-3 col-sm-12">
 		<div className="form-group">
 			<label>Ammount</label>
 			<input type="date" className="form-control" value={date} onChange={(e)=>setDate(e.target.value)} />
 			<span>default Today's date</span>
 		</div>
 		</div>
-		<div className="col-3">
+		<div className="col-md-3 col-sm-12">
 		<div className="form-group">
 			<button type="submit" className="btn btn-primary mt-3">Add</button>
 		</div>

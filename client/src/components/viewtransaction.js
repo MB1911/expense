@@ -22,19 +22,20 @@ const search = async(value) =>{
 return(
 <Card title="Summary of transaction" subtitle="This Month">
 	<Filter type="month" search={search}/>
-	<ul className="list-group" style={{"marginLeft":"10px"}}>
-		<div className="row">
-			{data &&  data.map(d=><>
-				<li className="list-group-item" style={{display:"flex","border":"none"}}>
-					<div className="col-md-3">
-						{d.type}
-					</div>
-					<div className="col-md-4 offset-md-2" >{formater(d.total)}</div>
-				</li>
-				</>)}
-			{data.length == 0 && <p className="text-muted">No record to display</p>}
-		</div>
-	</ul>
+	{data.length == 0 ? <p>No data to display</p> :
+	<table className="table table-borderless">
+		<thead>
+		<tr>
+			<th>Type</th>
+			<th>Ammount</th>
+		</tr>
+		</thead>
+		<tbody>
+			{data &&  data.map(d=><tr><td>{d.type}</td><td>{formater(d.total)}</td></tr>)}
+
+		</tbody>
+	</table>}
+	
 </Card>
 	)
 }

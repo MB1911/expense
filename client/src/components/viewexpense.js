@@ -51,7 +51,11 @@ let ammount = props.fdata.map(d=>d.ammount < 0 && d.ammount).reduce((a,b)=>a+b,0
 setExpense(ammount);
 const cat = await getData({url:"/expense/view/type"});
 setType(cat);
+
+
 },[props])
+
+
 
 
 //to display spinner at load time
@@ -103,14 +107,14 @@ const display = async() =>{
 	setData(tra_data);
 }
 return(
-	<div className="container">
+	<section>
 			{!props.isloading &&
 				<>
 					<EditModal show={editshow} handleClose={()=>setEditshow(false)} editdata={editdata} type={type} setdata={display}/>
 					<Deleteconfirm show={showdelete} data={data} handleClose={()=>setShowdelete(false)} handledelete={deleteexpense} id={deleteid}/>
 					<Card title="View Expense" subtitle="Month and year">
 							<div className="row">
-									<div className="col-4">
+									<div className="col-md-4 col-sm-12">
 											<label>Month</label>
 											<select className="form-select" value={date} onChange={handlechange}>
 												<option value="1">Jan</option>
@@ -127,7 +131,7 @@ return(
 												<option value="12">December</option>
 											</select>
 									</div>
-									<div className="col-4">
+									<div className="col-md-4 col-sm-12">
 											<label>Year</label>
 											<select className="form-select mb-5" value={year} onChange={handlechange}>
 												<option value="2022">2022</option>
@@ -139,7 +143,7 @@ return(
 								<div className="row">
 								
 								
-								<div className="col-4">
+								<div className="col-md-4 col-sm-12">
 									<Card title="Summary of expense" subtitle="this month">
 										<table className="table">
 										<tbody>	
@@ -150,7 +154,7 @@ return(
 										<h6><div><b>Total Expense: {formater(expense)}</b></div></h6>
 									</Card>
 								</div>
-								<div className="col-8">
+								<div className="col-md-8 col-sm-12">
 									
 										<Graph fdata={gdata}/>
 									
@@ -166,7 +170,7 @@ return(
 							
 							
 					</Card></>}
-			</div>
+			</section>
 	)
 }
 export default withLoader(WithData(Viewexpense,"/expense/alltransaction"));

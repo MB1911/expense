@@ -46,7 +46,12 @@ const handleglogin = (e) =>{
 }
 
 
-
+useEffect(()=>{
+if(islogin)
+{
+  hist("/dashboard");
+}
+},[])
 
 
 return(

@@ -48,7 +48,7 @@ if(groupby=="all")
 	let rec = parseInt(entery) + 1;
 	const tra_data = await getData({url:"/expense/alltransaction",method:"POST",body:{month:new Date().getMonth()+1,year:new Date().getFullYear(),num:rec}})	
 	setData(tra_data);
-	console.log(tra_data.length,entery+1);
+	console.log(tra_data);
 	setTotal(tra_data.length);
 }
 else
@@ -193,9 +193,9 @@ setDid(id);
 }
 
 return(
-	<div className="container">
+	<section>
 		<div className="row">
-			<div className="col-md-12 ">
+			<div className="col-md-12 col-sm-12 col-xxl-12">
 				<EditModal show={show} handleClose={handleClose} editdata={editdata} type={type} setdata={display}/>
 				<Deleteconfirm show={del} data={data} handleClose={()=>setDel(false)} handledelete={handledelete} id={did}/>
 				<Message show={mshow} handleClose={()=>setMshow(false)}/>
@@ -217,7 +217,7 @@ return(
 				}
 			</div>
 		</div>
-	</div>
+	</section>
 	)
 }
 export default withLoader(Addexpense);

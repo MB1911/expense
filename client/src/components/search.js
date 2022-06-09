@@ -96,7 +96,7 @@ const handlesearch = async() =>{
  const far = fdata.length ? fdata : data
 return(
 	<Card title="Search" subtitle="by categoty and ammount">
-		<div className="container">
+		
 			<div className="row">
 				<div className="col-md-2">
 					<div className="form-group">
@@ -185,7 +185,7 @@ return(
 				</div>
 			</div>
 
-		</div>
+		
 	</Card>
 
 	)

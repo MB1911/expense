@@ -1,4 +1,4 @@
-  import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 function withData(WrappedComponent, requestUrl) {
     const WithFetch = (props) => {
       const [data, setData] = useState([]);

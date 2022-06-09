@@ -9,13 +9,8 @@ export const useUser = () =>{
 export const Userprovider = (props) =>{
 const[islogin,setIslogin]=useState(false);
 const checklogin = () =>{
-
-	
 		setIslogin(true);
 		localStorage.setItem("username","demo");
-		
-	
-	
 }
 const handledelete = async(data,id) =>{
 

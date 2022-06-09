@@ -1,7 +1,7 @@
 const Tablefilter = ({total,type,setEntery,groupby,data,handlecat}) =>{
 return(
 	<div className="row">
-	<div className="col-2">
+	<div className="col-md-2 col-sm-12">
 	<div className="form-group">
 	
 	<label>Group-By</label>
@@ -11,8 +11,8 @@ return(
 	</select>
 	</div>
 	</div>
-	{total > 5 &&
-	<div className="col-2">
+	{total > 0 &&
+	<div className="col-md-2 col-sm-12">
 	<div className="form-group">
 	
 
